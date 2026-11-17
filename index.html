@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Informe semanal de conversación · TikTok</title>
+<meta name="description" content="Resumen semanal de la conversación en medios sobre TikTok en Argentina, Chile y Perú.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=TikTok+Sans:wght@300..900&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect width='24' height='24' rx='6' fill='%23000'/%3E%3Cpath d='M15 4c.4 2.1 1.8 3.6 3.9 3.8v2.8c-1.5 0-2.8-.5-3.9-1.2v5.9a5.1 5.1 0 1 1-5.1-5.1v2.9a2.3 2.3 0 1 0 2.3 2.3V4H15z' fill='%23fff'/%3E%3C/svg%3E">
+<script src="config.js"></script>
+<style>
+:root{
+  --ink:#141414; --ink-2:#555; --line:#E3E3E3; --bg:#F4F4F4; --paper:#fff; --head:#EDEDED;
+  --cyan:#25F4EE; --cyan-soft:#E2FCFB; --cyan-line:#7DE9E6; --cyan-ink:#0B7F7B;
+  --pink:#FE2C55; --pink-soft:#FFE9EE; --pink-line:#FFB3C2; --pink-ink:#D11841;
+  --grey-soft:#F2F2F2; --grey-line:#CFCFCF;
+  --font:"TikTok Sans",system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+  box-sizing:border-box; padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+  color-scheme:light;
+}
+html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + 70px)}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--font);font-size:16px;line-height:1.55}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:#000}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--cyan-ink);outline-offset:2px}
+img{max-width:100%}
+
+.bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:#000;color:#fff}
+.bar-in{max-width:1080px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;gap:18px;flex-wrap:wrap}
+.logo{display:flex;align-items:center;gap:8px;font-weight:700;font-size:17px;text-decoration:none}
+.logo svg{width:20px;height:20px}
+.bar-title{color:#BDBDBD;font-size:14px}
+.bar nav{margin-left:auto;display:flex;gap:6px;flex-wrap:wrap}
+.bar nav a{font-size:14px;font-weight:600;text-decoration:none;padding:6px 12px;border-radius:999px;border:1px solid #333}
+.bar nav a:hover{border-color:#777}
+
+main{max-width:1080px;margin:0 auto;padding:36px 24px 60px}
+.status{background:var(--paper);border-radius:18px;padding:48px 28px;text-align:center;color:var(--ink-2)}
+
+/* informe */
+.report{background:var(--paper);border-radius:22px;overflow:hidden}
+.r-head{background:var(--head);padding:44px 56px 40px;display:grid;grid-template-columns:1fr auto;gap:20px;align-items:end}
+.r-date{display:inline-block;background:#000;color:#fff;font-weight:600;font-size:15px;padding:8px 22px 8px 20px;border-radius:999px;box-shadow:-5px 0 0 var(--pink)}
+.r-title{font-size:clamp(30px,4.6vw,48px);font-weight:500;line-height:1.05;letter-spacing:-.025em;margin:22px 0 0;max-width:13em}
+.r-latest{font-size:14px;font-weight:600;color:var(--ink-2);margin:0 0 4px}
+.r-back{font-size:14px;font-weight:600;text-decoration:underline;text-underline-offset:3px;cursor:pointer;background:none;border:0;padding:0;font-family:inherit;color:var(--ink)}
+.r-totals{display:flex;gap:22px;text-align:right}
+.r-totals div{font-size:13px;color:var(--ink-2)}
+.r-totals b{display:block;font-size:30px;font-weight:500;color:var(--ink);line-height:1.05}
+.r-body{padding:56px 48px 20px}
+
+.pc{border:1.5px solid;border-radius:28px;padding:44px 36px 0;margin:0 0 60px;position:relative}
+.pc.ar{border-color:var(--cyan-line)} .pc.cl{border-color:var(--grey-line)} .pc.pe{border-color:var(--pink-line)}
+.pc-pill{position:absolute;top:-22px;left:50%;transform:translateX(-50%);display:flex;align-items:center;gap:12px;background:#F0F0F0;border-radius:999px;padding:7px 18px 7px 30px;font-size:21px;font-weight:500;white-space:nowrap;margin:0}
+.pc-pill::before{content:"";position:absolute;left:-6px;top:50%;width:28px;height:42px;border-radius:50%;transform:translateY(-50%);border-left:6px solid}
+.pc.ar .pc-pill::before{border-color:var(--cyan)} .pc.cl .pc-pill::before{border-color:#000} .pc.pe .pc-pill::before{border-color:var(--pink)}
+.pc-pill svg{width:32px;height:21px;border-radius:3px}
+.pc-grid{display:grid;grid-template-columns:minmax(0,1fr) 240px;gap:32px}
+.pc-grid.solo{grid-template-columns:minmax(0,1fr)}
+.pc-text{max-width:68ch}
+.pc-text p{margin:0 0 14px;font-size:15.5px;line-height:1.65}
+.pc-text a{color:var(--cyan-ink);text-decoration:underline;text-underline-offset:2px;font-style:italic}
+.pc-text b{font-weight:700}
+.d-card{display:block;text-decoration:none;background:#fff;border:1px solid var(--line);border-radius:8px;padding:14px 15px;margin-bottom:14px;box-shadow:0 4px 14px rgba(0,0,0,.07)}
+.d-card:hover{border-color:#bbb}
+.d-card .m{display:block;font-size:11.5px;font-weight:700;color:#fff;background:#000;padding:2px 8px;border-radius:3px;margin-bottom:9px;width:max-content;max-width:100%}
+.d-card .t{font-size:15px;font-weight:700;line-height:1.3}
+.bal{margin:22px -36px 0;border-radius:0 0 26px 26px;padding:34px 36px 26px;position:relative}
+.pc.ar .bal{background:var(--cyan-soft)} .pc.cl .bal{background:var(--grey-soft)} .pc.pe .bal{background:var(--pink-soft)}
+.bal-tag{position:absolute;top:-14px;left:26px;background:#000;color:#fff;font-weight:700;font-size:14px;padding:4px 18px;border-radius:999px;margin:0}
+.bal-row{display:grid;grid-template-columns:repeat(3,1fr)}
+.bal-cell{padding:0 26px}
+.bal-cell + .bal-cell{border-left:1.5px solid #fff}
+.bal-cell .num{font-size:38px;font-weight:500;line-height:1}
+.bal-cell .lab{font-size:14.5px;margin-top:8px}
+.bal-cell .pct{font-size:14.5px;font-weight:700;color:var(--pink-ink)}
+.pro{display:inline-block;margin-top:16px;border:1px solid #B9B9B9;background:#fff;border-radius:999px;font-size:12px;font-weight:600;padding:3px 13px}
+
+/* archivo */
+.archive{margin-top:56px}
+.archive h2{font-size:26px;font-weight:600;letter-spacing:-.015em;margin:0 0 6px}
+.archive > p{margin:0 0 22px;color:var(--ink-2)}
+.weeks{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:14px}
+.wk{display:block;text-align:left;background:var(--paper);border:1.5px solid transparent;border-radius:16px;padding:18px 18px 16px;cursor:pointer;font-family:inherit;color:inherit;text-decoration:none}
+.wk:hover{border-color:#000}
+.wk[aria-current="true"]{border-color:var(--pink)}
+.wk .d{font-weight:700;font-size:17px}
+.wk .n{font-size:13px;color:var(--ink-2);margin:2px 0 12px}
+.wk .row{display:grid;grid-template-columns:76px 1fr;align-items:center;gap:8px;font-size:12.5px;margin-top:6px}
+.stack{display:flex;height:8px;border-radius:999px;overflow:hidden;background:#eee}
+.stack i{display:block;height:100%}
+.legend{display:flex;gap:16px;font-size:13px;color:var(--ink-2);margin:0 0 18px;flex-wrap:wrap}
+.legend span{display:flex;align-items:center;gap:6px}
+.sw{width:11px;height:11px;border-radius:3px;display:inline-block}
+
+footer{max-width:1080px;margin:0 auto;padding:0 24px 40px;color:var(--ink-2);font-size:13px}
+
+@media (max-width:760px){
+  .bar-title{display:none}
+  .bar-in{flex-wrap:nowrap;padding:10px 14px;gap:12px}
+  .bar nav{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none}
+  .bar nav a{white-space:nowrap;padding:5px 11px;font-size:13px}
+  main{padding:22px 12px 40px}
+  .r-head{padding:30px 22px;grid-template-columns:1fr}
+  .r-totals{text-align:left}
+  .r-body{padding:44px 12px 8px}
+  .pc{padding:40px 18px 0;margin-bottom:52px}
+  .pc-grid{grid-template-columns:1fr;gap:8px}
+  .bal{margin:20px -18px 0;padding:30px 12px 20px}
+  .bal-cell{padding:0 10px}.bal-cell .num{font-size:28px}
+  .pc-pill{font-size:18px}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<header class="bar">
+  <div class="bar-in">
+    <a class="logo" href="#" aria-label="Última semana"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 3c.4 2.3 1.9 3.9 4.2 4.1v3.1c-1.6 0-3-.5-4.2-1.3v6.4A5.6 5.6 0 1 1 9.4 9.8v3.2a2.5 2.5 0 1 0 2.5 2.5V3H15z" fill="currentColor"/></svg>TikTok</a>
+    <span class="bar-title">Informe semanal de conversación</span>
+    <nav aria-label="Ir a"><a href="#argentina">Argentina</a><a href="#chile">Chile</a><a href="#peru">Perú</a><a href="#semanas-anteriores">Semanas anteriores</a></nav>
+  </div>
+</header>
+<main>
+  <div id="report"><div class="status">Cargando el informe…</div></div>
+  <section class="archive" id="semanas-anteriores" hidden>
+    <h2>Semanas anteriores</h2>
+    <p>Todos los informes publicados, de la más reciente a la más antigua.</p>
+    <div class="legend"><span><i class="sw" style="background:var(--cyan)"></i>Positivas</span><span><i class="sw" style="background:#C9C9C9"></i>Neutras</span><span><i class="sw" style="background:var(--pink)"></i>Negativas</span></div>
+    <div class="weeks" id="weeks"></div>
+  </section>
+</main>
+<footer>Conteo sobre el total de notas publicadas de lunes a domingo en medios de Argentina, Chile y Perú.</footer>
+
+<script>
+(() => {
+const CFG = window.TIKTOK_INFORME || {};
+const ORDER = ["Argentina", "Chile", "Perú"];
+const COUNTRY = {
+  "Argentina": {cls:"ar", up:"ARGENTINA", anchor:"argentina",
+    flag:'<svg viewBox="0 0 30 20" aria-hidden="true"><rect width="30" height="20" fill="#74ACDF"/><rect y="6.67" width="30" height="6.66" fill="#fff"/><circle cx="15" cy="10" r="2.3" fill="#F6B40E"/></svg>'},
+  "Chile": {cls:"cl", up:"CHILE", anchor:"chile",
+    flag:'<svg viewBox="0 0 30 20" aria-hidden="true"><rect width="30" height="20" fill="#fff"/><rect y="10" width="30" height="10" fill="#D52B1E"/><rect width="10" height="10" fill="#0039A6"/><path d="M5 2.6l.9 2.6h2.7l-2.2 1.6.8 2.6L5 7.8 2.8 9.4l.8-2.6-2.2-1.6h2.7z" fill="#fff"/></svg>'},
+  "Perú": {cls:"pe", up:"PERÚ", anchor:"peru",
+    flag:'<svg viewBox="0 0 30 20" aria-hidden="true"><rect width="30" height="20" fill="#D91023"/><rect x="10" width="10" height="20" fill="#fff"/></svg>'}
+};
+const $ = s => document.querySelector(s);
+const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const safeUrl = u => /^https?:\/\//i.test(u || "") ? u : "#";
+const md = t => esc(t).replace(/\[([^\]]+)\]\((https?:[^)\s]+)\)/g, (_, a, u) => `<a href="${esc(safeUrl(u.replace(/&amp;/g,"&")))}" target="_blank" rel="noopener">${a}</a>`)
+  .replace(/\b(positivas?|negativas?|proactivos?|proactivas?)\b/g, "<b>$1</b>");
+const num = v => { const n = parseInt(String(v).replace(/[^\d-]/g, ""), 10); return isNaN(n) ? 0 : n; };
+const pct = (n, t) => t ? Math.round(100 * n / t) : 0;
+const sing = (n, a, b) => n === 1 ? a : b;
+
+function parseCSV(text){
+  const rows = []; let row = [], f = "", q = false;
+  for (let i = 0; i < text.length; i++){
+    const c = text[i];
+    if (q){ if (c === '"'){ if (text[i+1] === '"'){ f += '"'; i++; } else q = false; } else f += c; }
+    else if (c === '"') q = true;
+    else if (c === ","){ row.push(f); f = ""; }
+    else if (c === "\n" || c === "\r"){ if (c === "\r" && text[i+1] === "\n") i++; row.push(f); rows.push(row); row = []; f = ""; }
+    else f += c;
+  }
+  if (f !== "" || row.length){ row.push(f); rows.push(row); }
+  return rows;
+}
+
+function buildWeeks(rows){
+  const [head, ...data] = rows;
+  const k = Object.fromEntries(head.map((h, i) => [h.trim(), i]));
+  const get = (r, name) => (r[k[name]] ?? "").trim();
+  // por id (lunes|país) queda la aprobación más reciente
+  const latest = new Map();
+  data.filter(r => r.length > 4 && get(r, "lunes")).forEach(r => {
+    const id = get(r, "id") || get(r, "lunes") + "|" + get(r, "pais");
+    const prev = latest.get(id);
+    if (!prev || get(r, "aprobado_en") >= get(prev, "aprobado_en")) latest.set(id, r);
+  });
+  const weeks = new Map();
+  latest.forEach(r => {
+    const lunes = get(r, "lunes");
+    if (!weeks.has(lunes)) weeks.set(lunes, {lunes, domingo: get(r, "domingo"), rotulo: get(r, "semana"), paises: []});
+    const pos = num(get(r, "positivas")), neu = num(get(r, "neutras")), neg = num(get(r, "negativas"));
+    weeks.get(lunes).paises.push({
+      pais: get(r, "pais"), pos, neu, neg, total: pos + neu + neg, proactivas: num(get(r, "proactivas")),
+      texto_positivo: get(r, "texto_positivo"), texto_negativo: get(r, "texto_negativo"),
+      destacadas: [1, 2].map(i => ({titulo: get(r, `destacada_${i}_titulo`), medio: get(r, `destacada_${i}_medio`), link: get(r, `destacada_${i}_link`)})).filter(d => d.titulo)
+    });
+  });
+  return [...weeks.values()]
+    .map(w => (w.paises.sort((a, b) => ORDER.indexOf(a.pais) - ORDER.indexOf(b.pais)), w))
+    .sort((a, b) => b.lunes.localeCompare(a.lunes));
+}
+
+let WEEKS = [];
+function renderReport(w, isLatest){
+  const tot = w.paises.reduce((s, c) => s + c.total, 0);
+  const pro = w.paises.reduce((s, c) => s + c.proactivas, 0);
+  let h = `<article class="report" aria-labelledby="r-title">
+    <header class="r-head"><div>
+      ${isLatest ? `<p class="r-latest">Última semana publicada</p>` : `<p class="r-latest"><button class="r-back" type="button" id="go-latest">Ver la última semana</button></p>`}
+      <span class="r-date">${esc(w.rotulo)}</span>
+      <h1 class="r-title" id="r-title">Informe resumen semanal de conversación</h1></div>
+      <div class="r-totals"><div><b>${tot}</b>notas en la semana</div><div><b>${pro}</b>${sing(pro,"nota proactiva","notas proactivas")}</div></div>
+    </header><div class="r-body">`;
+  w.paises.forEach(c => {
+    const C = COUNTRY[c.pais] || {cls:"cl", up:c.pais.toUpperCase(), anchor:"", flag:""};
+    h += `<section class="pc ${C.cls}" id="${C.anchor}" aria-label="${esc(c.pais)}">
+      <h2 class="pc-pill">${esc(C.up)} ${C.flag}</h2>
+      <div class="pc-grid ${c.destacadas.length ? "" : "solo"}">
+        <div class="pc-text"><p>${md(c.texto_positivo)}</p><p>${md(c.texto_negativo)}</p></div>
+        ${c.destacadas.length ? `<div>${c.destacadas.map(d => `<a class="d-card" href="${esc(safeUrl(d.link))}" target="_blank" rel="noopener"><span class="m">${esc(d.medio)}</span><span class="t">${esc(d.titulo)}</span></a>`).join("")}</div>` : ""}
+      </div>
+      <div class="bal"><p class="bal-tag">Balance de tono:</p>
+        <div class="bal-row">
+          <div class="bal-cell"><div class="num">${c.pos}</div><div class="lab">${sing(c.pos,"nota positiva","notas positivas")}</div><div class="pct">${pct(c.pos,c.total)}% del total</div></div>
+          <div class="bal-cell"><div class="num">${c.neu}</div><div class="lab">${sing(c.neu,"nota neutra","notas neutras")}</div><div class="pct">${pct(c.neu,c.total)}% del total</div></div>
+          <div class="bal-cell"><div class="num">${c.neg}</div><div class="lab">${sing(c.neg,"nota negativa","notas negativas")}</div><div class="pct">${pct(c.neg,c.total)}% del total</div></div>
+        </div>
+        ${c.proactivas ? `<span class="pro">${c.proactivas} ${sing(c.proactivas,"nota proactiva","notas proactivas")}</span>` : ""}
+      </div>
+    </section>`;
+  });
+  h += `</div></article>`;
+  $("#report").innerHTML = h;
+  const back = $("#go-latest");
+  if (back) back.onclick = () => { location.hash = ""; show(); window.scrollTo(0, 0); };
+}
+function renderArchive(currentLunes){
+  const sec = $("#semanas-anteriores");
+  sec.hidden = WEEKS.length < 1;
+  $("#weeks").innerHTML = WEEKS.map(w => {
+    const tot = w.paises.reduce((s, c) => s + c.total, 0);
+    return `<a class="wk" href="#s-${esc(w.lunes)}" ${w.lunes === currentLunes ? 'aria-current="true"' : ""}>
+      <div class="d">${esc(w.rotulo)}</div><div class="n">${tot} notas</div>
+      ${w.paises.map(c => `<div class="row"><span>${esc(c.pais)}</span><span class="stack" role="img" aria-label="${esc(c.pais)}: ${c.pos} positivas, ${c.neu} neutras, ${c.neg} negativas">
+        <i style="width:${pct(c.pos,c.total)}%;background:var(--cyan)"></i><i style="width:${pct(c.neu,c.total)}%;background:#C9C9C9"></i><i style="width:${pct(c.neg,c.total)}%;background:var(--pink)"></i></span></div>`).join("")}
+    </a>`;
+  }).join("");
+}
+function show(){
+  if (!WEEKS.length) return;
+  const m = location.hash.match(/^#s-(\d{4}-\d{2}-\d{2})$/);
+  const w = (m && WEEKS.find(x => x.lunes === m[1])) || WEEKS[0];
+  renderReport(w, w === WEEKS[0]);
+  renderArchive(w.lunes);
+  if (m) window.scrollTo(0, 0);
+}
+window.addEventListener("hashchange", () => { if (/^#s-/.test(location.hash) || location.hash === "") show(); });
+
+async function load(){
+  const override = new URLSearchParams(location.search).get("csv");
+  const urls = [override, CFG.CSV_URL,
+    CFG.SHEET_ID && `https://docs.google.com/spreadsheets/d/${CFG.SHEET_ID}/gviz/tq?tqx=out:csv&sheet=Informes`].filter(Boolean);
+  for (const u of urls){
+    try {
+      const r = await fetch(u, {cache: "no-store"});
+      if (!r.ok) continue;
+      const t = await r.text();
+      if (!/^\s*"?id"?,/.test(t)) continue;
+      return buildWeeks(parseCSV(t));
+    } catch {}
+  }
+  throw new Error("sin datos");
+}
+load().then(ws => {
+  WEEKS = ws;
+  if (!WEEKS.length) { $("#report").innerHTML = '<div class="status">Todavía no hay informes publicados. El primero aparece acá apenas se aprueba.</div>'; return; }
+  show();
+}).catch(() => {
+  $("#report").innerHTML = '<div class="status">No se pudo leer el informe. Revisá que el Sheet de publicación esté publicado en la web y volvé a cargar la página.</div>';
+});
+})();
+</script>
+</body>
+</html>
